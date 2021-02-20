@@ -1,0 +1,157 @@
+{
+  "_id": "app",
+  "name": "app",
+  "description": "应用",
+  "aid": "0",
+  "do": true,
+  "content": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "required": true,
+        "description": "应用名称，2-20个字符",
+        "exampleValue": "@string(\"lower\", 3, 20)"
+      },
+      "description": {
+        "name": "description",
+        "type": "string",
+        "description": "应用描述",
+        "required": false
+      },
+      "lastVersion": {
+        "name": "lastVersion",
+        "type": "string",
+        "description": "最后一次发布版本号",
+        "required": false,
+        "multiple": false,
+        "minLength": "1"
+      },
+      "visibility": {
+        "type": "integer",
+        "description": "",
+        "defaultValue": "0",
+        "enum": [
+          {
+            "value": "0",
+            "text": "private"
+          },
+          {
+            "value": "1",
+            "text": "internal"
+          },
+          {
+            "value": "2",
+            "text": "public"
+          }
+        ],
+        "required": false
+      },
+      "users": {
+        "type": "array",
+        "required": false,
+        "description": "用户列表",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "user": {
+                "required": false,
+                "type": "ref",
+                "ref": "user"
+              },
+              "role": {
+                "required": false,
+                "type": "ref",
+                "properties": {},
+                "ref": "appRole"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "name": "status",
+        "type": "integer",
+        "defaultValue": "0",
+        "enum": [
+          {
+            "value": "0",
+            "text": "正常"
+          },
+          {
+            "value": "2",
+            "text": "已删除"
+          }
+        ],
+        "description": "标记项目是否删除",
+        "required": false
+      },
+      "createdAt": {
+        "name": "createdAt",
+        "type": "datetime",
+        "description": "",
+        "required": false
+      },
+      "updatedAt": {
+        "name": "updatedAt",
+        "type": "datetime",
+        "description": "",
+        "required": false
+      },
+      "_id": {
+        "type": "uuid",
+        "required": true
+      },
+      "owner": {
+        "required": true,
+        "type": "ref",
+        "description": "应用所有者",
+        "properties": {},
+        "ref": "user"
+      },
+      "tokens": {
+        "required": false,
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "_id": {
+                "required": false,
+                "type": "uuid"
+              },
+              "description": {
+                "required": false,
+                "index": false,
+                "type": "string",
+                "description": "token描述"
+              },
+              "createdAt": {
+                "required": false,
+                "type": "datetime"
+              },
+              "createdBy": {
+                "required": false,
+                "type": "string",
+                "index": false
+              },
+              "token": {
+                "required": true,
+                "index": false,
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "description": "应用token,第三方服务验证用"
+      },
+      "deletedAt": {
+        "required": false,
+        "type": "datetime"
+      }
+    }
+  },
+  "tag": "mongodb"
+}

@@ -1,0 +1,52 @@
+{
+  "aid": "0",
+  "content": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "required": true,
+        "type": "uuid",
+        "description": ""
+      },
+      "cid": {
+        "required": true,
+        "type": "uuid",
+        "description": "被删除资源 Id",
+        "index": true
+      },
+      "deletedBy": {
+        "required": false,
+        "type": "ref",
+        "properties": {},
+        "ref": "user",
+        "description": "删除人"
+      },
+      "cname": {
+        "required": true,
+        "index": false,
+        "type": "string",
+        "description": "collection name"
+      },
+      "content": {
+        "required": false,
+        "index": false,
+        "type": "string",
+        "description": "描述"
+      },
+      "aid": {
+        "required": true,
+        "type": "uuid",
+        "description": "应用Id",
+        "index": true
+      },
+      "createdAt": {
+        "required": false,
+        "type": "datetime"
+      }
+    }
+  },
+  "tag": "mongodb",
+  "name": "recycle",
+  "description": "被删除的内容记录表",
+  "_id": "recycle"
+}

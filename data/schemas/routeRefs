@@ -1,0 +1,39 @@
+{
+  "aid": "0",
+  "content": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "required": true,
+        "type": "uuid"
+      },
+      "rid": {
+        "required": true,
+        "type": "uuid",
+        "description": "route Id",
+        "index": true
+      },
+      "aid": {
+        "required": true,
+        "type": "uuid",
+        "description": "app Id",
+        "index": true
+      },
+      "refs": {
+        "required": false,
+        "type": "array",
+        "description": "引用的schema.id",
+        "items": [
+          {
+            "type": "uuid",
+            "required": false
+          }
+        ]
+      }
+    }
+  },
+  "name": "routeRefs",
+  "tag": "mongodb",
+  "description": "route 引用 schema ids",
+  "_id": "routeRefs"
+}

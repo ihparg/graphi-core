@@ -1,0 +1,63 @@
+{
+  "aid": "0",
+  "method": "POST",
+  "tag": "app",
+  "resolve": "func:recycle.restore",
+  "requestBody": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "required": true,
+        "type": "uuid"
+      }
+    }
+  },
+  "routeParams": {
+    "type": "object",
+    "properties": {}
+  },
+  "queryString": {
+    "type": "object",
+    "properties": {}
+  },
+  "requestHeaders": {
+    "type": "ref",
+    "properties": {
+      "Content-Type": {
+        "ref": "requestHeaders.Content-Type"
+      },
+      "Authorization": {
+        "ref": "requestHeaders.Authorization"
+      }
+    },
+    "ref": "requestHeaders"
+  },
+  "responseBody": {
+    "type": "ref",
+    "properties": {
+      "code": {
+        "ref": "response.code"
+      },
+      "message": {
+        "ref": "response.message"
+      },
+      "data": {
+        "required": false,
+        "type": "json"
+      }
+    },
+    "ref": "response"
+  },
+  "responseHeaders": {
+    "type": "object",
+    "properties": {}
+  },
+  "title": "恢复已删除数据",
+  "path": "/api/app/restore",
+  "refs": [
+    "requestHeaders",
+    "response"
+  ],
+  "_id": "5fd3688435e4e277a6a7603e",
+  "fullPath": "POST:/api/app/restore"
+}
